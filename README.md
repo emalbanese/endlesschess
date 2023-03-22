@@ -3,9 +3,9 @@
 #### Description:
 Endless Chess is a challenge variation of the well-known game Chess, in which the player faces off against an increasingly difficult AI, attempting to beat records for turns survived, pieces taken, and checkmates made. It is designed as a web app, with the mechanics functioning entirely via javascript.
 
-    Files written: index.html, about.html main.js, and custom.css.
+Files written: index.html, about.html main.js, and custom.css.
 
-    index.html is the main page of the website. It hosts the actual endless chess game, along with the game statistics, rules, a reset button, and a directory to the about page as well as a link to my github. It is where the chessboard, courtesy of chessboard-element, is defined and displayed. It has responsive design in mind for different sizes of browser windows, however, I chose not to create it with mobile in mind. This is because this is a challenge I created targeted at higher level players, who generally are chess streamers and/or pros, that wouldn't be playing a challenge variation on their phones. In theory I'd like it to be a web app first, and if it were to hypothetically become popular, I would develop a standalone app similar to the direction chess.com took.
+index.html is the main page of the website. It hosts the actual endless chess game, along with the game statistics, rules, a reset button, and a directory to the about page as well as a link to my github. It is where the chessboard, courtesy of chessboard-element, is defined and displayed. It has responsive design in mind for different sizes of browser windows, however, I chose not to create it with mobile in mind. This is because this is a challenge I created targeted at higher level players, who generally are chess streamers and/or pros, that wouldn't be playing a challenge variation on their phones. In theory I'd like it to be a web app first, and if it were to hypothetically become popular, I would develop a standalone app similar to the direction chess.com took.
 
     about.html is simply a page that hosts some information about the project, the AI, some limitations of the project, and gives credit to the libraries that were used to make this project possible, which I will talk about more in-depth further on.
 
