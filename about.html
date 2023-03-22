@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Chess</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="./custom.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <title>Endless Chess</title>
+
+  </head>
+  <body>
+    <header>
+      <div class="logo">Endless Chess</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="#">Github</a>
+      </nav>
+    </header>
+    <div class="about-text-box">
+      <h2>Endless Chess</h2>
+      <p>Endless Chess is a chess challenge created by Eric Albanese for HarvardX's CS50 course.</p>
+      <p>In essence, it is a game of chess in which the player continues to play against an AI opponent until the player is checkmated.</p>
+      <p>Every time the player checkmates the opponent, the board is reset and the AI increases in difficulty.</p>
+      <p>While the main goal is to see how many times a player can checkmate an increasingly difficult opponent, there are other records such as
+        moves made and pieces taken to beat!
+      </p>
+    </div>
+    <div class="about-text-box">
+      <h2>Stockfish</h2>
+      <p>The AI opponent is the Stockfish engine, a free and open-source chess engine, known to be the strongest chess-engine in the world.</p>
+      <p>The difficulty level ranges from 1-20, with 1 meaning Stockfish looks 1 move ahead - equivalent to making somewhat random legal moves. At 20, Stockfish looks up to 64 moves ahead.</p>
+    </div>
+    <div class="about-text-box">
+      <h2>Limitations</h2>
+      <p>While rare, underpromotions do happen sometimes in high-level chess matches. However, all pawns will automatically promote to queen.</p>
+      <p>This is due to an ongoing open issue with Chess.js regarding lack of promotion checking and a bug with the en passant checking function.</p>
+      <p>While I have a promotion checking function and option menu made, the conflict with the existing chess.js code prevents their implementation for now.</p>
+    </div>
+    <div class="about-text-box">
+      <h2>Resources</h2>
+      <p>Endless Chess is powered by Chess.js, Chessboard-element.js, Stockfish.js, and their respective dependencies.</p>
+    </div>
+    <main>
+

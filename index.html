@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Chess</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="./custom.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="module" src="https://unpkg.com/chessboard-element/bundled/chessboard-element.bundled.js"></script>
+    <script type="module" src="./node_modules/chess.js/dist/chess.js"></script>
+    <script src="https://unpkg.com/stockfish@15.0.0/src/stockfish.js"></script>
+    <script type ='module' src="./main.js"></script>
+    <title>Endless Chess</title>
+
+  </head>
+  <body>
+    <header>
+      <div class="logo">Endless Chess</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="#">Github</a>
+      </nav>
+    </header>
+    <main>
+      <h2>Play against Stockfish!</h2>
+        <div>
+            <h2 id="status" style="margin-top: 1vh">Status:</h2>
+        </div>
+        <div class="row" style="text-align: center;">
+          <div class="col">
+            <p style="position: relative;">
+              <a class="btn gray-btn" data-bs-toggle="collapse" href="#rules" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Rules
+              </a>
+              <div style="position: absolute; top: 100px; left: 20px;" class="collapse" id="rules">
+                <div id="ruledetails" class="card card-body vstack gap-5" style="font-size: 16px; max-width: 20vw; min-width: 380px;">
+                  <div>Quick guide:</div>
+                 <div>All pieces and moves function identically to the way they do in regular chess.</div>
+                 <div>Only promotions act differently, in that you can only promote to queen.</div>
+                 <div>The game only ends when the player is checkmated.</div>
+                 <div>When the player checkmates the AI, the board will reset and the difficulty will increase.</div>
+                 <div>If there is a draw, the game will reset without increasing the difficulty.</div>
+                 <div>If you lose or wish to start over, the reset button will reset the board, all stats, and the difficulty.</div>
+                 <div>See how far you can get!</div>
+                 <div style="font-weight: bold">For more information, check out the about page.</div>
+                </div>
+              </div>
+              </p>
+          </div>
+          <div class="col" style="width: 500px;">
+            <button id="reset" class="gray-btn" style="position: relative;">Reset Game</button>
+          </div>
+        </div>
+        <div style="width: 1440px;">
+        <chess-board id="board" style="width: 30vw; min-width: 35%; margin: 0 auto; margin-top: 10px;" position="start" draggable-pieces></chess-board>
+      </div>
+      </div>
+      <div class="hstack gap-5" style="justify-content: center;">
+                  <h2 id="turncounter">Moves made: 0</h2>
+                  <h2 id="score">Score: 0</h2>
+                  <h2 id="taken">Pieces taken: 0</h2>
+                  <h2 id="checkmates">Checkmates: 0</h2>
+                  <h2 id="difficulty">Current Difficulty: 0/20</h2>
+      </div>
+        <div id="overlay"></div>
+    <div id="endbox" class="game-stats-box" style="position: absolute; top:35vh; justify-content: center; display: none;">
+      <button id="exitbtn" class="exit-btn">X</button>
+      <h2>Game Over</h2>
+      <form id="endstats">
+        <button>Play Again</button>
+      <div class="player-stats">
+        <div class="stat-item">
+          <div class="stat-label">Moves Made: </div>
+          <div class="stat-value" id="moves-display"></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Score:</div>
+          <div class="stat-value" id="score-display"></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Pieces Taken:</div>
+          <div class="stat-value" id="pieces-display"></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Checkmates:</div>
+          <div class="stat-value" id="checkmate-display"></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Highest Difficulty:</div>
+          <div class="stat-value" id="diff-display"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div id="promo" class="promo-menu" style="display: none;">
+    <div class="promo-col">
+      <button id="queen">
+      <img src="./node_modules/chessboard-element/chesspieces/wikipedia/wQ.png" alt="queen" width="50">
+    </button>
+    <button id="rook">
+      <img src="./node_modules/chessboard-element/chesspieces/wikipedia/wR.png" alt="rook" width="50">
+    </button>
+    <button id="knight">
+      <img src="./node_modules/chessboard-element/chesspieces/wikipedia/wN.png" alt="knight" width="50">
+    </button>
+    <button id="bishop">
+      <img src="./node_modules/chessboard-element/chesspieces/wikipedia/wB.png" alt="bishop" width="50">
+    </button>
+    </div>
+  </div>
+  <script type="module"> //main game
+    import {endlesschess} from "./main.js";
+    import { Chess } from './node_modules/chess.js/dist/chess.js';
+    endlesschess();
+    </script>
+
+    <script type="module"> //exit button & rules
+      import { helpers } from './main.js';
+      helpers();
+    </script>
